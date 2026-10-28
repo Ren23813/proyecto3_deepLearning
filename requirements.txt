@@ -1,0 +1,18 @@
+# LLM
+anthropic>=0.70
+python-dotenv>=1.0
+pydantic>=2.7
+
+# Ingesta de PDFs (fonttools evita advertencias de pypdf con las fuentes del OKMA)
+pypdf>=5.0
+fonttools>=4.50
+
+# Recuperación
+numpy>=1.26
+rank-bm25>=0.2.2
+rapidfuzz>=3.9
+sentence-transformers>=3.0
+
+# App y evaluación
+streamlit>=1.38
+pandas>=2.2

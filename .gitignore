@@ -1,3 +1,8 @@
+# para no filtrar los pdfs proporcionados
+*.pdf 
+
+/data/processed
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -218,3 +223,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Artefactos regenerables del proyecto (python -m src.kaq.build_index)
+data/index/
+logs/
