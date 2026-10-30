@@ -1,4 +1,4 @@
-"""Ingesta del Diccionario Bilingüe Kaqchikel OKMA (PDF con capa de texto).
+"""Ingesta del Diccionario Bilingüe Kaqchikel OKMA (PDF con texto).
 
 Produce:
 - okma_entries.jsonl: entradas kaq -> es (tipo "entrada") y frases idiomáticas (tipo "frase")
@@ -143,12 +143,14 @@ _FIELDS = {
 }
 _LIST_FIELDS = {"sinonimos", "variantes", "vease", "campo_lexico"}
 _LABELS = ("Forma poseída", "Sin.", "Var.", "Véase", "Pl.", "Campo Léxico", "Nota", "Lit.")
-# Abreviaturas gramaticales al inicio de una acepción: "s. 1a.", "v.t. d.", "adj. y s.",
-# incluidas erratas del PDF como "s 1a." o ".v.i."
-_CATEGORY_TOKEN = re.compile(r"^(?:\.?[a-záéíóúü][a-záéíóúü.]{0,13}|\d[a-z]\.?)$")
+# Abreviaturas gramaticales al inicio de una acepción: "s. 1a.", "s. 2.", "v.t. d.",
+# "adj. y s.", incluidas erratas del PDF como "s 1a." o ".v.i."
+_CATEGORY_TOKEN = re.compile(r"^(?:\.?[a-záéíóúü][a-záéíóúü.]{0,13}|\d[a-z]?\.?)$")
 _SENTENCE_SPLIT = re.compile(r"(?<=[.!?])\s+")
 # Saltillo o diéresis: señal de texto en kaqchikel ("gü" del español no cuenta)
 _KAQ_MARKS = re.compile(r"'|[äëïö]|(?<![gG])ü")
+# Ejemplo de conjugación tras la glosa de un verbo: "Explicar. Xcholon. Explicó."
+_CONJUGATED = re.compile(r"^X\w+\.?$")
 # Lo que queda entre la transcripción y la definición: raíz opcional y separador
 # ("||", "|", "||." o la errata "ns")
 _AFTER_TRANSCRIPTION = re.compile(r"^\s*(?P<root>-[^\s|]+)?\s*(?:\|\|?\.?|ns\b)?\s*")
@@ -176,7 +178,7 @@ def _split_category(sense: str) -> tuple[str | None, str]:
     return " ".join(tokens[:n]), " ".join(tokens[n:])
 
 
-def _glosses(definition: str) -> str | None:
+def _glosses(definition: str) -> list[str]:
     """Glosas en español al inicio de la acepción ("Pita. Cordel. Mecate.").
 
     Se salta un "Forma poseída:" inicial y se detiene en la primera oración
@@ -194,11 +196,28 @@ def _glosses(definition: str) -> str | None:
             or len(sent.split()) > max_words
             or sent.startswith(_LABELS)
             or _KAQ_MARKS.search(sent)
-            or len(out) == 4
+            or _CONJUGATED.match(sent)
+            or len(out) == 6
         ):
             break
         out.append(sent.rstrip("."))
-    return "; ".join(out) or None
+    return out
+
+
+def _is_derived_sense(sense: str) -> bool:
+    """Acepción de una forma derivada ("-cholo v.i. ...", "Ruxurixik. s. v. ...")."""
+    tokens = sense.split()
+    return sense.startswith("-") or (len(tokens) > 1 and bool(_CATEGORY_TOKEN.match(tokens[1])))
+
+
+def _translation(senses: list[str]) -> str | None:
+    """Glosas de todas las acepciones del lema, sin repetir ("Escarbar; Mover; Mezclar")."""
+    glosses = []
+    for i, sense in enumerate(senses):
+        if i > 0 and _is_derived_sense(sense):
+            continue
+        glosses += _glosses(_split_category(sense)[1])
+    return "; ".join(dict.fromkeys(glosses)) or None
 
 
 def _has_example(senses: list[str]) -> bool:
@@ -229,7 +248,7 @@ def parse_entry(lines: list[tuple[int, str]], tipo: str) -> dict:
     # lstrip quita el punto suelto de "||." y de erratas como ".v.i."
     senses = [s.strip().lstrip(". ") for s in body.split("||")]
     senses = [s for s in senses if s]
-    category, first_def = _split_category(senses[0]) if senses else (None, "")
+    category = _split_category(senses[0])[0] if senses else None
 
     return {
         "tipo": tipo,
@@ -239,7 +258,7 @@ def parse_entry(lines: list[tuple[int, str]], tipo: str) -> dict:
         "morfologia": morph,
         "raiz": root or None,
         "categoria": category,
-        "traduccion": _glosses(first_def),
+        "traduccion": _translation(senses),
         "acepciones": senses,
         **_extract_fields(body),
         "tiene_ejemplo": _has_example(senses),
@@ -335,6 +354,10 @@ def build_stats(entries: list[dict], glosario: list[dict]) -> dict:
 
 
 def write_sample(entries: list[dict], n: int = 30, seed: int = 42) -> None:
+    # La muestra lleva las anotaciones de la revisión manual: no se sobrescribe
+    if config.OKMA_SAMPLE.exists():
+        print(f"{config.OKMA_SAMPLE.name} ya existe (revisión manual), no se regenera")
+        return
     sample = random.Random(seed).sample(entries, n)
     out = ["# Muestra para revisión manual contra el PDF", "",
            "Marcar cada entrada como OK o con el problema encontrado.", ""]
@@ -369,11 +392,16 @@ def main() -> None:
             unique.append(e)
     entries = [{"id": f"okma-{i:05d}", "diccionario": "OKMA", **e} for i, e in enumerate(unique, 1)]
 
+    # El glosario se enlaza por forma exacta; la clave plegada es solo el respaldo
+    # (si no, "Gato || me's" quedaría enlazado también a "mes", basura)
+    by_lemma: dict[str, list[str]] = {}
     by_fold: dict[str, list[str]] = {}
     for e in entries:
+        by_lemma.setdefault(e["lema"], []).append(e["id"])
         by_fold.setdefault(e["lema_fold"], []).append(e["id"])
     glosario = [
-        {"id": f"okmag-{i:05d}", "diccionario": "OKMA", **g, "ref_ids": by_fold.get(g["kaqchikel_fold"], [])}
+        {"id": f"okmag-{i:05d}", "diccionario": "OKMA", **g,
+         "ref_ids": by_lemma.get(g["kaqchikel"]) or by_fold.get(g["kaqchikel_fold"], [])}
         for i, g in enumerate(parse_glosario(reader, config.OKMA_GLOSARIO_PAGES), 1)
     ]
 
