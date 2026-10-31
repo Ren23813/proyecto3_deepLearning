@@ -1,0 +1,86 @@
+/* Paleta inspirada en el tejido kaqchikel, en tonos apagados:
+   algodón crudo, ixcaco (algodón café natural), granate de los güipiles de
+   Comalapa y Santa Catarina Palopó, morado de los güipiles ceremoniales de
+   Comalapa, maíz e índigo. El único motivo es una franja de rombos pequeños,
+   como las de brocado, que separa el encabezado. */
+:root {
+  --kq-algodon: #FBF8F3;
+  --kq-algodon-2: #F2EBE0;
+  --kq-linea: #E4D8C6;
+  --kq-tinta: #2F2622;
+  --kq-ixcaco: #6B4F3A;
+  --kq-granate: #8E3B2F;
+  --kq-morado: #5E4B6E;
+  --kq-maiz: #B8892B;
+  --kq-maiz-suave: #F6ECD3;
+  --kq-indigo: #34506B;
+}
+
+.block-container { padding-top: 2.5rem; }
+
+/* Encabezado */
+.kq-title { font-size: 2rem; font-weight: 700; color: var(--kq-tinta); margin: 0; letter-spacing: -0.01em; }
+.kq-subtitle { color: var(--kq-ixcaco); margin: 0.25rem 0 0.9rem; font-size: 1rem; }
+.kq-band {
+  height: 8px;
+  margin: 0 0 1.4rem;
+  opacity: 0.75;
+  background-repeat: repeat-x;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='8'><path d='M1 4 4 1 7 4 4 7Z' fill='%238E3B2F'/><path d='M11 4 14 1 17 4 14 7Z' fill='%23B8892B'/><path d='M21 4 24 1 27 4 24 7Z' fill='%235E4B6E'/></svg>");
+}
+
+/* Tarjeta de entrada del diccionario */
+.kq-card {
+  background: #FFFFFF;
+  border: 1px solid var(--kq-linea);
+  border-left: 4px solid var(--kq-granate);
+  border-radius: 10px;
+  padding: 0.95rem 1.1rem 0.8rem;
+  margin: 0 0 0.8rem;
+}
+.kq-card.kq-memoria { border-left-color: var(--kq-ixcaco); background: var(--kq-algodon); }
+.kq-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
+.kq-word { font-size: 1.35rem; font-weight: 700; color: var(--kq-tinta); }
+.kq-cat { font-size: 0.82rem; color: var(--kq-ixcaco); font-style: italic; }
+.kq-src {
+  margin-left: auto;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--kq-indigo);
+  background: #EAF0F4;
+  border-radius: 999px;
+  padding: 0.12rem 0.6rem;
+  white-space: nowrap;
+}
+.kq-src.kq-sin-fuente { color: var(--kq-ixcaco); background: var(--kq-algodon-2); }
+.kq-trad { font-size: 1.05rem; color: var(--kq-granate); font-weight: 600; margin: 0.15rem 0 0.35rem; }
+.kq-sig { margin: 0 0 0.4rem; color: var(--kq-tinta); line-height: 1.5; }
+.kq-ej { border-top: 1px dashed var(--kq-linea); padding-top: 0.45rem; margin-top: 0.4rem; }
+.kq-ej-kaq { font-style: italic; color: var(--kq-morado); }
+.kq-ej-es { color: var(--kq-ixcaco); font-size: 0.92rem; margin-bottom: 0.3rem; }
+
+/* Explicación, corrección y "no encontrado" */
+.kq-expl { font-size: 1.05rem; line-height: 1.55; margin: 0.2rem 0 1rem; }
+.kq-corr {
+  background: var(--kq-maiz-suave);
+  border: 1px solid #E8D3A0;
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin: 0 0 0.5rem;
+}
+.kq-corr b { color: var(--kq-tinta); }
+.kq-corr small { color: var(--kq-ixcaco); }
+.kq-vacio {
+  background: var(--kq-algodon-2);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  margin: 0 0 1rem;
+}
+.kq-vacio h4 { margin: 0 0 0.3rem; font-size: 1.1rem; color: var(--kq-tinta); }
+.kq-vacio p, .kq-vacio li { color: var(--kq-ixcaco); margin: 0.15rem 0; }
+
+/* Columna de comparación */
+.kq-modo { font-weight: 700; color: var(--kq-tinta); margin-bottom: 0.1rem; }
+.kq-modo-meta { font-size: 0.78rem; color: var(--kq-ixcaco); margin-bottom: 0.6rem; }
+
+.kq-pie { color: var(--kq-ixcaco); font-size: 0.8rem; margin-top: 2rem; border-top: 1px solid var(--kq-linea); padding-top: 0.7rem; }

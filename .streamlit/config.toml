@@ -1,0 +1,16 @@
+# Paleta tomada de materiales del tejido kaqchikel: algodón crudo (fondo),
+# ixcaco o algodón café natural (texto) y el rojo granate de los güipiles
+# de Comalapa y Santa Catarina Palopó (acento). El resto está en app/style.css
+[theme]
+base = "light"
+primaryColor = "#8E3B2F"
+backgroundColor = "#FBF8F3"
+secondaryBackgroundColor = "#F2EBE0"
+textColor = "#2F2622"
+font = "sans serif"
+
+[client]
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false
