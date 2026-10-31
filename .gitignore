@@ -232,3 +232,8 @@ __marimo__/
 # Artefactos regenerables del proyecto (python -m src.kaq.build_index)
 data/index/
 logs/
+
+# Resultados de evaluación que copian texto de los diccionarios (sin permiso para publicarlos).
+# rows.csv, summary.json, judge.jsonl, agreement.json e iteraciones.csv sí se suben
+eval/results/*/responses.jsonl
+eval/results/*/human_review.csv

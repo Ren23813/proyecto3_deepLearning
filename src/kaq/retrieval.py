@@ -13,7 +13,7 @@ La función principal es search(query, mode, k).
 """
 import json
 import re
-from collections import defaultdict
+from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from functools import lru_cache
 
@@ -263,9 +263,13 @@ def suggest_correction(query: str) -> tuple[dict | None, list[str]]:
         ids = idx.folded.get(fold(t))
         if not ids:
             continue
-        forms = list(dict.fromkeys(idx.docs[i]["lema"] for i in ids))
-        if key(t) in forms:
-            return None, [f for f in forms if f != key(t)]
+        # Con varias formas posibles (ixoq -> ixo'q, ixöq) gana la que tiene más
+        # entradas: más acepciones o presente en ambos diccionarios = más común
+        counts = Counter(idx.docs[i]["lema"] for i in ids)
+        forms = sorted(dict.fromkeys(idx.docs[i]["lema"] for i in ids), key=lambda f: -counts[f])
+        # Se compara con key() en ambos lados: el lema "¡k'o chi nuk'u'x!" trae signos
+        if key(t) in {key(f) for f in forms}:
+            return None, [f for f in forms if key(f) != key(t)]
         best = forms[0]
         return {"forma": best, "motivo": _reason(t, best)}, forms[1:]
 

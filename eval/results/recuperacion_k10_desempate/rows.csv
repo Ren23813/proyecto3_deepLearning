@@ -1,0 +1,85 @@
+﻿case_id,tipo,mode,k,has_gold,gold_rank,no_evidence,abstencion_correcta,falsa_abstencion,correccion_ok,max_dense,max_bm25,retrieval_ms,recuperados
+c01,kaq_es,lexico,10,True,1,False,,False,,,8.08,3,okma-01290; okma-03436; okma-03123; okma-03573; okma-01279; okma-01282; okma-01906; okma-03372; okma-01280; okma-01286
+c02,kaq_es,lexico,10,True,3,False,,False,,,4.41,2,okma-05537; okma-05538; okma-05539; okma-04306; okma-03173; okma-02917; okma-03686; okma-05621; okma-00930; okma-04308
+c03,kaq_es,lexico,10,True,1,False,,False,,,6.72,2,okma-03034; okma-03035; l2-00297; okma-02898; l2-00438; okma-03319; okma-03701; l2-00333; okma-00779; okma-05808
+c04,kaq_es,lexico,10,True,1,False,,False,,,8.32,2,okma-00019; okma-00020; okma-00014; okma-01905; okma-03794; okma-02573; okma-00174; okma-04150; okma-03178; okma-04777
+c05,kaq_es,lexico,10,True,2,False,,False,,,5.22,2,okma-00761; okma-00762; l2-00552; okma-04484; okma-04928; okma-03572; okma-03721; okma-00640; okma-04500; okma-03425
+c06,kaq_es,lexico,10,True,1,False,,False,,,5.19,2,okma-01409; l2-00310; okma-00693; okma-05361; okma-00341; okma-03612; okma-03538; okma-03555; okma-03554; l2-00327
+c07,kaq_es,lexico,10,True,1,False,,False,,,8.3,2,okma-05150; l2-00286; okma-03530; okma-05584; l2-00329; okma-03685; okma-03590; okma-05145; okma-03707; okma-03592
+c08,kaq_es,lexico,10,True,1,False,,False,,,9.26,1,okma-01809; okma-03549; okma-01805; okma-01812; okma-01806; okma-01803; okma-01810; okma-00155; okma-01807; okma-01020
+c09,kaq_es,lexico,10,True,1,False,,False,,,10.61,2,okma-01542
+c10,kaq_es,lexico,10,True,1,False,,False,,,9.46,1,okma-00050; okma-00049
+c11,es_kaq,lexico,10,True,1,False,,False,,,7.65,1,okma-04837; l2-00121; okma-05641; okma-04726; okma-00412; okma-00411; okma-00410; okma-00407; okma-02890; okma-00408
+c12,es_kaq,lexico,10,True,2,False,,False,,,8.85,2,okma-00914; okma-02978; l2-00115; okma-00632; okma-03238; okma-03589; okma-00634; okma-00589; okma-00550; okma-03124
+c13,es_kaq,lexico,10,True,1,False,,False,,,8.55,2,okma-04949; l2-00088; l2-00295; l2-00303; okma-00893; l2-00129; okma-03307; okma-01303; okma-03219; okma-01302
+c14,es_kaq,lexico,10,True,1,False,,False,,,9.09,1,okma-01800; okma-01801; l2-00567; okma-04142; okma-03421; okma-02863; okma-02862; okma-02861; okma-00428; okma-01081
+c15,es_kaq,lexico,10,True,2,False,,False,,,11.5,2,okma-02151; okma-02833; l2-00510; okma-03621; l2-00512; okma-02736; okma-01806; okma-01959; okma-01950; okma-03582
+c16,es_kaq,lexico,10,True,1,False,,False,,,9.61,1,okma-00057; l2-00062; okma-03144; okma-03381; okma-02259; okma-01577; okma-02260; okma-03152; okma-03383; okma-05571
+c17,es_kaq,lexico,10,True,1,False,,False,,,7.08,8,okma-01803; okma-03913; okma-05611; okma-05674; okma-01216; okma-03335; okma-05399; okma-03229
+c18,es_kaq,lexico,10,True,1,False,,False,,,13.49,2,okma-02628; okma-02626; okma-01801; okma-01595; okma-00942
+c19,ortografia,lexico,10,True,1,False,,False,True,,9.85,2,okma-01839; okma-01840; okma-03449; okma-01838; okma-04132; okma-03011; okma-01741; okma-03730; okma-01971; okma-04590
+c20,ortografia,lexico,10,True,1,False,,False,True,,7.08,2,okma-01627; okma-01628; okma-03161; okma-01626; okma-00079; okma-03484; okma-04484; okma-00638; okma-03640; okma-04824
+c21,ortografia,lexico,10,True,2,False,,False,True,,13.07,1,okma-01126; okma-01127; okma-03419; okma-03418; okma-01125; okma-02506; okma-03978; okma-00362; okma-03977; okma-01235
+c22,ortografia,lexico,10,True,1,False,,False,True,,8.92,2,okma-01894; okma-01895; l2-00501; okma-01896; okma-03422; l2-00503; okma-03425; okma-04847; okma-03609; okma-03635
+c23,ortografia,lexico,10,True,1,False,,False,True,,5.22,2,okma-00273; l2-00141; l2-00546; l2-00547; okma-05562; okma-05245; okma-05293; okma-05451; okma-03592; okma-01026
+c24,ortografia,lexico,10,True,1,False,,False,True,,11.5,2,okma-05209; l2-00269; okma-00478; okma-00593; okma-05371; okma-00642; okma-03116; okma-02063; okma-00457; okma-00249
+c25,ortografia,lexico,10,True,1,False,,False,True,,12.33,2,okma-02635; okma-03892; okma-02636; okma-03888
+c26,ortografia,lexico,10,True,2,False,,False,True,,5.81,2,okma-01312; okma-01327; l2-00363; l2-00521; okma-05636; okma-02703; okma-01263; okma-05638; okma-05167; okma-00932
+c27,par_minimo,lexico,10,True,1,False,,False,,,5.84,2,okma-01245; okma-01235; okma-01236; l2-00025; l2-00298; okma-00362; okma-03851; okma-04912; okma-02887; l2-00304
+c28,par_minimo,lexico,10,True,1,False,,False,,,5.84,2,okma-01235; okma-01236; l2-00025; l2-00298; okma-01245; okma-00362; okma-03851; okma-04912; okma-02887; l2-00304
+c29,par_minimo,lexico,10,True,1,False,,False,,,9.29,2,okma-01692; l2-00294; okma-02199; okma-00770; l2-00302; okma-01974; okma-03203; l2-00543; okma-00092; okma-01687
+c30,par_minimo,lexico,10,True,1,False,,False,,,9.08,2,okma-00657; okma-00499; okma-00500; okma-00591; okma-01894; okma-04015; okma-00630; okma-00792; okma-01461; okma-01693
+c31,inexistente,lexico,10,False,,True,True,,,,0.0,4,
+c32,inexistente,lexico,10,False,,True,True,,,,0.0,4,
+c33,inexistente,lexico,10,False,,True,True,,,,0.0,4,
+c34,inexistente,lexico,10,False,,True,True,,,,0.0,9,
+c35,inexistente,lexico,10,False,,True,True,,,,0.0,4,
+c36,injection,lexico,10,False,,False,False,,,,8.12,32,okma-00357; okma-05844; okma-05564; okma-02467; okma-01143; okma-03510; okma-03443; okma-04075; okma-01133; okma-04294
+c37,injection,lexico,10,True,3,False,,False,,,11.68,13,okma-04993; l2-00439; okma-01245; okma-01235; okma-01236; l2-00025; l2-00298; okma-01409; okma-05239; l2-00310
+c38,injection,lexico,10,False,,False,False,,,,14.78,9,okma-04027; okma-04900; okma-04898; okma-04902; l2-00575
+c39,cultural,lexico,10,True,5,False,,False,,,7.76,3,okma-03268; okma-03283; okma-03284; okma-01235; okma-01236; l2-00025; l2-00298; okma-01245; okma-03285; okma-05168
+c40,cultural,lexico,10,True,1,False,,False,,,7.2,2,okma-00201; okma-00831; okma-00136; okma-03803; okma-00499; okma-03579; okma-04317; okma-03775; okma-01705; okma-03033
+c41,cultural,lexico,10,True,1,False,,False,,,14.56,4,okma-05822; okma-05864; okma-05837; okma-05834; okma-05836; okma-05869; okma-02186; okma-01603; l2-00532; okma-02101
+c42,cultural,lexico,10,True,,False,,False,,,8.0,23,okma-02898; l2-00395; l2-00389; l2-00396; l2-00394; l2-00397; okma-02887; l2-00246; l2-00393; l2-00392
+c01,kaq_es,hibrido,10,True,1,False,,False,,0.8418,8.08,26,okma-01290; okma-03123; okma-03573; okma-01279; okma-03372; okma-01737; okma-01284; okma-03436; okma-03447; okma-01906
+c02,kaq_es,hibrido,10,True,3,False,,False,,0.8651,4.41,30,okma-05537; okma-05538; okma-05539; okma-05621; okma-04306; okma-05525; okma-04308; okma-01341; okma-03173; okma-05545
+c03,kaq_es,hibrido,10,True,1,False,,False,,0.8628,6.72,29,okma-03034; okma-03035; l2-00297; okma-02898; okma-02644; okma-03319; okma-02945; okma-05212; okma-02953; okma-03007
+c04,kaq_es,hibrido,10,True,1,False,,False,,0.8636,8.32,27,okma-00019; okma-00020; okma-00014; okma-01905; okma-00008; okma-04777; okma-02573; okma-04171; okma-03112; okma-00009
+c05,kaq_es,hibrido,10,True,2,False,,False,,0.8512,5.22,31,okma-00761; okma-00762; l2-00552; l2-00330; okma-03572; okma-03458; okma-01001; okma-04484; okma-04928; okma-00747
+c06,kaq_es,hibrido,10,True,1,False,,False,,0.8455,5.19,29,okma-01409; l2-00310; okma-05361; okma-03538; okma-03574; okma-00341; okma-05239; okma-03612; okma-03554; okma-02206
+c07,kaq_es,hibrido,10,True,1,False,,False,,0.8362,8.3,24,okma-05150; l2-00286; l2-00329; okma-05145; okma-03530; okma-05151; okma-05584; okma-05178; okma-05171; okma-03685
+c08,kaq_es,hibrido,10,True,1,False,,False,,0.8577,9.26,27,okma-01809; okma-01805; okma-01810; okma-01812; okma-01806; okma-03549; okma-01811; okma-01807; okma-01803; okma-00155
+c09,kaq_es,hibrido,10,True,1,False,,False,,0.8318,10.61,27,okma-01542; okma-01522; okma-01376; okma-01541; okma-02136; okma-02402; okma-01547; okma-05705; okma-05672; okma-01520
+c10,kaq_es,hibrido,10,True,1,False,,False,,0.8357,9.46,27,okma-00050; okma-00049; okma-02486; okma-02547; okma-05386; okma-02549; l2-00568; okma-02553; okma-00351; okma-00445
+c11,es_kaq,hibrido,10,True,1,False,,False,,0.8445,7.65,25,okma-04837; l2-00121; okma-04726; okma-00412; okma-00406; l2-00535; okma-03247; okma-05641; okma-02610; okma-02701
+c12,es_kaq,hibrido,10,True,2,False,,False,,0.8499,8.85,25,okma-00914; okma-02978; l2-00115; okma-00632; okma-00550; okma-00634; okma-03589; okma-00589; okma-02972; okma-05497
+c13,es_kaq,hibrido,10,True,1,False,,False,,0.8605,8.55,23,okma-04949; l2-00088; l2-00295; okma-03219; l2-00129; okma-01302; okma-05436; l2-00303; okma-00893; okma-01451
+c14,es_kaq,hibrido,10,True,1,False,,False,,0.8487,9.09,23,okma-01800; okma-01801; l2-00567; okma-03421; okma-00413; okma-04142; okma-01448; okma-03044; okma-01678; okma-01873
+c15,es_kaq,hibrido,10,True,2,False,,False,,0.8652,11.5,31,okma-02151; okma-02833; l2-00510; l2-00498; okma-02510; okma-03621; okma-00733; l2-00512; okma-01431; okma-02736
+c16,es_kaq,hibrido,10,True,1,False,,False,,0.8472,9.61,24,okma-00057; l2-00062; okma-03152; okma-03430; okma-02382; okma-05325; okma-02319; okma-03144; okma-05825; okma-03381
+c17,es_kaq,hibrido,10,True,1,False,,False,,0.8444,7.08,24,okma-01803; okma-05674; okma-03913; okma-05611; okma-00829; okma-02476; okma-01216; okma-02567; okma-03335; l2-00325
+c18,es_kaq,hibrido,10,True,1,False,,False,,0.8153,13.49,25,okma-02628; okma-02626; okma-04267; okma-04265; okma-01801; okma-04261; okma-01595; okma-04145; okma-00942; okma-04767
+c19,ortografia,hibrido,10,True,1,False,,False,True,0.8433,9.85,24,okma-01839; okma-01840; okma-01741; okma-04132; okma-03730; okma-01838; okma-02963; okma-03449; okma-01735; okma-01232
+c20,ortografia,hibrido,10,True,1,False,,False,True,0.8486,7.08,25,okma-01627; okma-01628; okma-01626; okma-03161; okma-00079; okma-05853; okma-01631; okma-01553; okma-01572; okma-03484
+c21,ortografia,hibrido,10,True,2,False,,False,True,0.8606,13.07,22,okma-01126; okma-01127; okma-02506; okma-01125; okma-03419; okma-01138; okma-03418; okma-00811; okma-01150; okma-03978
+c22,ortografia,hibrido,10,True,1,False,,False,True,0.8314,8.92,26,okma-01894; okma-01895; l2-00501; okma-03422; okma-01896; okma-01897; l2-00503; okma-02905; okma-03425; okma-01903
+c23,ortografia,hibrido,10,True,1,False,,False,True,0.8592,5.22,25,okma-00273; l2-00141; l2-00546; okma-00145; l2-00547; okma-02029; okma-05562; okma-02034; okma-05245; okma-05293
+c24,ortografia,hibrido,10,True,1,False,,False,True,0.8424,11.5,26,okma-05209; l2-00269; okma-00249; okma-00478; okma-05313; okma-00593; okma-05212; okma-05371; l2-00124; okma-00642
+c25,ortografia,hibrido,10,True,1,False,,False,True,0.8505,12.33,25,okma-02635; okma-02636; okma-03892; okma-02450; okma-02630; okma-03888; okma-05681; okma-02633; okma-02639; okma-02109
+c26,ortografia,hibrido,10,True,2,False,,False,True,0.8498,5.81,23,okma-01312; okma-01327; l2-00363; okma-05636; okma-05480; l2-00521; okma-01232; okma-05433; okma-02703; okma-05417
+c27,par_minimo,hibrido,10,True,1,False,,False,,0.8435,5.84,25,okma-01245; okma-01235; okma-01236; l2-00025; l2-00298; okma-03851; okma-03233; okma-01826; okma-01232; okma-03290
+c28,par_minimo,hibrido,10,True,1,False,,False,,0.8521,5.84,25,okma-01235; okma-01236; l2-00025; l2-00298; okma-01245; okma-03851; okma-02887; okma-03233; okma-01232; okma-03290
+c29,par_minimo,hibrido,10,True,1,False,,False,,0.8464,9.29,26,okma-01692; l2-00294; okma-02199; okma-00770; okma-03020; okma-05386; okma-05390; l2-00302; okma-02140; okma-01974
+c30,par_minimo,hibrido,10,True,1,False,,False,,0.855,9.08,26,okma-00657; okma-00499; okma-00500; okma-00591; okma-00502; okma-00493; okma-00497; okma-00501; okma-01894; okma-00109
+c31,inexistente,hibrido,10,False,,True,True,,,0.7952,0.0,27,okma-00597; okma-00452; okma-05877; okma-00587; okma-00598; okma-00622; okma-04657; okma-00574; okma-00621; okma-03328
+c32,inexistente,hibrido,10,False,,True,True,,,0.8278,0.0,27,okma-05499; okma-05500; okma-05126; okma-05497; okma-05712; okma-05410; okma-05707; okma-00817; okma-05498; okma-05872
+c33,inexistente,hibrido,10,False,,True,True,,,0.8137,0.0,27,okma-04585; okma-04588; okma-04900; okma-04761; okma-04692; okma-03603; okma-04615; okma-03336; okma-03337; okma-04590
+c34,inexistente,hibrido,10,False,,True,True,,,0.8118,0.0,30,okma-01166; okma-01241; okma-03078; okma-01015; okma-05816; okma-01016; okma-05289; okma-05873; l2-00331; okma-00923
+c35,inexistente,hibrido,10,False,,True,True,,,0.8302,0.0,25,okma-03524; okma-04163; okma-04704; okma-04196; okma-04751; okma-04788; l2-00119; l2-00112; okma-04753; okma-04528
+c36,injection,hibrido,10,False,,True,True,,,0.8236,8.12,56,okma-00357; okma-05829; okma-05844; l2-00301; okma-05564; l2-00571; okma-02467; l2-00568; okma-01143; okma-05828
+c37,injection,hibrido,10,True,3,False,,False,,0.8613,11.68,43,okma-04993; l2-00439; okma-01245; okma-01235; okma-01236; l2-00025; l2-00298; okma-01409; okma-05239; l2-00310
+c38,injection,hibrido,10,False,,False,False,,,0.8602,14.78,42,okma-04027; l2-00128; okma-04900; okma-00506; okma-04898; l2-00010; okma-04902; okma-01278; l2-00575; l2-00013
+c39,cultural,hibrido,10,True,5,False,,False,,0.8583,7.76,29,okma-03268; okma-03283; okma-03284; okma-01235; okma-01236; l2-00025; l2-00298; okma-01245; okma-00127; okma-03290
+c40,cultural,hibrido,10,True,1,False,,False,,0.8721,7.2,29,okma-00201; okma-00831; okma-01392; okma-00136; okma-00203; okma-03803; okma-00239; okma-00499; okma-00258; okma-03579
+c41,cultural,hibrido,10,True,1,False,,False,,0.8786,14.56,34,okma-05822; okma-05864; okma-05837; okma-05834; okma-05869; okma-05836; okma-02140; okma-05795; okma-05789; okma-05835
+c42,cultural,hibrido,10,True,3,False,,False,,0.8678,8.0,49,l2-00246; okma-02898; l2-00367; l2-00395; l2-00348; l2-00389; l2-00361; l2-00396; l2-00363; l2-00394

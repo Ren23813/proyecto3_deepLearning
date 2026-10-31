@@ -1,0 +1,38 @@
+{
+  "tag": "recuperacion_k10_umbral083",
+  "fecha": "2026-10-31T14:33:38",
+  "solo_recuperacion": true,
+  "config": {
+    "model": null,
+    "prompt": "v1",
+    "k": 10,
+    "dense_min": 0.83,
+    "short_circuit": true,
+    "casos": 42,
+    "nota": "Umbral denso 0.83"
+  },
+  "modos": {
+    "lexico": {
+      "recall@1": 0.743,
+      "recall@3": 0.943,
+      "recall@5": 0.971,
+      "recall@10": 0.971,
+      "mrr": 0.839,
+      "abstencion_correcta": 0.714,
+      "falsa_abstencion": 0.0,
+      "correccion_ok": 1.0,
+      "latencia_media_ms": 4
+    },
+    "hibrido": {
+      "recall@1": 0.743,
+      "recall@3": 0.971,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr": 0.849,
+      "abstencion_correcta": 0.714,
+      "falsa_abstencion": 0.0,
+      "correccion_ok": 1.0,
+      "latencia_media_ms": 27
+    }
+  }
+}

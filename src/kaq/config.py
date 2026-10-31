@@ -46,7 +46,7 @@ DENSE_MIN_SCORE = 0.85  # modo híbrido
 ## ANTRHOPIC LLM
 MODEL = "claude-haiku-5-5"  # desarrollo y evaluación masiva
 MODEL_ALT = "claude-sonnet-5-5"  # comparación en una iteración
-PROMPT_VERSION = "v1"
+PROMPT_VERSION = "v3"  # elegida en la evaluación (eval/results/iteraciones.csv)
 MAX_TOKENS = 2000  # incluye el razonamiento adaptativo del modelo
 EFFORT = "low"  # desde la API 2026-10-21 no se aceptan temperature/top_p/top_k
 MAX_ENTRY_CHARS = 1500  # recorte de cada entrada en el prompt

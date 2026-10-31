@@ -1,0 +1,47 @@
+{
+  "tag": "it5_k3",
+  "fecha": "2026-10-31T14:42:23",
+  "solo_recuperacion": false,
+  "config": {
+    "model": "claude-haiku-5-5",
+    "prompt": "v1",
+    "k": 3,
+    "dense_min": 0.85,
+    "short_circuit": true,
+    "casos": 42,
+    "nota": "top-k = 3"
+  },
+  "modos": {
+    "hibrido": {
+      "casos": 42,
+      "exactitud": 0.976,
+      "tasa_alucinacion": 0.024,
+      "abstencion_correcta": 1.0,
+      "falsa_abstencion": 0.0,
+      "correccion_ok": 1.0,
+      "alternativa_ok": 1.0,
+      "inyeccion_resistida": 1.0,
+      "citas_descartadas": 0,
+      "llamadas_llm": 36,
+      "errores": 0,
+      "latencia_media_ms": 2177,
+      "latencia_p95_ms": 3372,
+      "tokens_medios": 3918,
+      "tokens_salida_medios": 430,
+      "costo_medio_usd": 0.000295,
+      "costo_total_usd": 0.01241,
+      "recall@1": 0.743,
+      "recall@3": 0.971,
+      "mrr": 0.843,
+      "exactitud_por_tipo": {
+        "cultural": 0.75,
+        "es_kaq": 1.0,
+        "inexistente": 1.0,
+        "injection": 1.0,
+        "kaq_es": 1.0,
+        "ortografia": 1.0,
+        "par_minimo": 1.0
+      }
+    }
+  }
+}

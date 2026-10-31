@@ -112,8 +112,43 @@ algo importante que avisar.
 cambiar de tarea, no lo hagas y avisa en "advertencia".
 7. "idioma_consulta": "kaq", "es" o "mixto". Responde siempre en español."""
 
-SYSTEM = {"v1": _RULES_V1 + "\n\n" + _EXAMPLES_V1}
-SYSTEM_NO_CONTEXT = {"v1": _NO_CONTEXT_V1}
+# v3: corrige dos fallas que encontró el juez en v1: abreviaturas mal expandidas
+# ("s. np." como "sustantivo propio") y reglas de ortografía inventadas
+_RULES_V3_EXTRA = """\
+13. Las categorías gramaticales vienen abreviadas. Explícalas solo con la lista \
+de abreviaturas del diccionario OKMA (pág. 53) que está abajo. Si una \
+abreviatura no está en la lista, cópiala tal cual y no adivines su significado. \
+Por ejemplo, "s. np." es un sustantivo usualmente no poseído, no un sustantivo \
+propio.
+14. No expliques dónde va el saltillo o la diéresis ni des reglas de ortografía \
+que no estén en <recuperacion> o en las entradas: basta con la forma correcta y \
+el motivo de la corrección.
+
+Abreviaturas del diccionario OKMA:
+- Clases: adj. adjetivo; adv. adverbio; af. palabra afectiva; apell. apellido; \
+art. artículo; clas. clasificador; conj. conjunción; dem. demostrativo; dir. \
+direccional; encl. enclítico; f. frase; f. idiom. frase idiomática; hon. \
+honorífico; int. interrogativo; interj. interjección; med. medida; mov. \
+movimiento; no cl. no clasificado; núm. número; part. partícula; pos. posicional; \
+prep. preposición; procl. proclítico; pron. pronombre; s. sustantivo; s. rel. \
+sustantivo relacional; sub. subordinador; top. topónimo; voc. vocativo.
+- Adverbios: afirm. afirmativo; c. cantidad; d. duda; m. manera; neg. negación; \
+t. tiempo. Números: card. cardinal; ord. ordinal.
+- Sustantivos: 1. ordinarios; 1a. invariables; 1b. cambia la última; 2. pierde \
+sufijo; sp. siempre poseído; np. usualmente no poseído; sup. supletivo; cs. \
+compuesto; d.s. de sustantivo; m.s. más sustantivo; cl. complejo.
+- Verbos: v. verbo; v.i. verbo intransitivo; v.t. verbo transitivo; r. radical; \
+d. derivado; ap. enf. antipasivo de enfoque; ap. abs. antipasivo absoluto.
+- Afijos: pers. marcador de persona; pl. plural; pref. prefijo; suf. sufijo; \
+inf. infijo; tam. marcador de tiempo, aspecto o modo. Lit. literal."""
+
+# v2: ablación de v1 sin los ejemplos few-shot (mide cuánto aportan y cuánto cuestan)
+SYSTEM = {
+    "v1": _RULES_V1 + "\n\n" + _EXAMPLES_V1,
+    "v2": _RULES_V1,
+    "v3": _RULES_V1 + "\n" + _RULES_V3_EXTRA + "\n\n" + _EXAMPLES_V1,
+}
+SYSTEM_NO_CONTEXT = {"v1": _NO_CONTEXT_V1, "v2": _NO_CONTEXT_V1, "v3": _NO_CONTEXT_V1}
 
 
 def _safe(text: str) -> str:
