@@ -176,8 +176,19 @@ def run_judge(tag_dir: Path, modes: list[str] | None, model: str, limit: int | N
     update_summary(tag_dir)
 
 
+def _human_entry(e: dict) -> str:
+    """Entrada de la respuesta completa: la persona debe ver lo mismo que el juez."""
+    text = f'{e["palabra"]} ({e.get("categoria") or "-"}): {e["traduccion"]}. {e.get("significado") or ""}'
+    if e.get("ejemplos"):
+        text += " Ejemplos: " + "; ".join(f'{x["kaq"]} = {x["es"]}' for x in e["ejemplos"])
+    return text
+
+
 def export_human(tag_dir: Path, n: int, seed: int = 0) -> None:
-    """Muestra estratificada por modo para que una persona la califique a ciegas."""
+    """Muestra estratificada por modo para que una persona la califique a ciegas.
+
+    Si ya existe human_review.csv, conserva las calificaciones y notas de cada caso.
+    """
     cases = {c["id"]: c for c in load_cases()}
     docs = _docs_by_id()
     responses = _load_jsonl(tag_dir / "responses.jsonl")
@@ -186,19 +197,33 @@ def export_human(tag_dir: Path, n: int, seed: int = 0) -> None:
     sample = []
     for mode_rows in groups.values():
         sample += rng.sample(mode_rows, min(len(mode_rows), max(1, n // len(groups))))
+    path = tag_dir / "human_review.csv"
+    previous = {}
+    if path.exists():
+        with open(path, encoding="utf-8-sig") as f:
+            previous = {(r["case_id"], r["mode"]): r for r in csv.DictReader(f)}
+    def doc(i: str) -> str:
+        return f'{docs[i]["texto"][:300]} ({docs[i]["diccionario"]} p.{docs[i]["pagina"]})'
+
     rows = []
     for r in sample:
         case, res = cases[r["case_id"]], r["response"]
-        gold = " | ".join(f'{docs[i]["texto"][:300]} ({docs[i]["diccionario"]} p.{docs[i]["pagina"]})'
-                          for i in case["gold_ids"] if i in docs)
+        gold = " | ".join(doc(i) for i in case["gold_ids"] if i in docs)
+        # El juez también recibe las entradas recuperadas: la persona debe verlas
+        extra = [i for i in res["_meta"].get("retrieved_ids", []) if i in docs and i not in case["gold_ids"]]
+        corr = res.get("correccion_sugerida")
+        old = previous.get((r["case_id"], r["mode"]), {})
         rows.append({
             "case_id": r["case_id"], "mode": r["mode"], "query": case["query"],
             "referencia": case["referencia"], "evidencia_referencia": gold,
+            "evidencia_recuperada": " | ".join(doc(i) for i in extra),
             "respuesta_explicacion": res["explicacion"],
-            "respuesta_entradas": " | ".join(f'{e["palabra"]}: {e["traduccion"]}' for e in res["entradas"]),
-            "humano_fidelidad": "", "humano_alucinacion": "", "notas": "",
+            "respuesta_correccion": f'{corr["forma"]} ({corr["motivo"]})' if corr else "",
+            "respuesta_entradas": " || ".join(_human_entry(e) for e in res["entradas"]),
+            "humano_fidelidad": old.get("humano_fidelidad", ""),
+            "humano_alucinacion": old.get("humano_alucinacion", ""),
+            "notas": old.get("notas", ""),
         })
-    path = tag_dir / "human_review.csv"
     with open(path, "w", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(rows[0]))
         writer.writeheader()

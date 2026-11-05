@@ -4,6 +4,8 @@
 /data/processed
 /data/raw
 /data/demo_cache.json
+/docs
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

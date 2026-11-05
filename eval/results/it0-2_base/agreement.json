@@ -1,0 +1,8 @@
+{
+  "casos": 12,
+  "acuerdo_fidelidad": 0.75,
+  "acuerdo_fidelidad_±1": 0.833,
+  "kappa_fidelidad": 0.455,
+  "acuerdo_alucinacion": 0.833,
+  "kappa_alucinacion": 0.429
+}
